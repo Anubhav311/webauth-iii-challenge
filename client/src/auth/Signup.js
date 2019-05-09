@@ -5,12 +5,13 @@ class Login extends React.Component {
   state = {
     username: '',
     password: '',
+    department: '',
   };
 
   render() {
     return (
       <>
-        <h1>Login</h1>
+        <h1>SignUp</h1>
         <form onSubmit={this.submitForm}>
           <div>
             <label htmlFor="username" />
@@ -32,6 +33,16 @@ class Login extends React.Component {
               type="password"
             />
           </div>
+          <div>
+            <label htmlFor="department" />
+            <input
+              id="department"
+              placeholder="department"
+              onChange={this.handleChange}
+              value={this.state.department}
+              type="text"
+            />
+          </div>
           <br></br>
           <div>
             <button type="submit">Submit</button>
@@ -49,13 +60,14 @@ class Login extends React.Component {
 
   submitForm = event => {
     event.preventDefault();
-    const endpoint = 'http://localhost:5000/api/auth/login';
+    const endpoint = 'http://localhost:5000/api/auth/register';
 
     axios
       .post(endpoint, this.state)
       .then(res => {
-        localStorage.setItem('jwt', res.data.token);
-        this.props.history.push('/users');
+        console.log(res)
+        // localStorage.setItem('jwt', res.data.password);
+        this.props.history.push('/login');
       })
       .catch(err => {
         console.error('Login Error', err);

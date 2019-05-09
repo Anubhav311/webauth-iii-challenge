@@ -11,12 +11,12 @@ class Users extends React.Component {
   render() {
     return (
       <>
-        <h2>Users List</h2>
-        <ul>
+        <h1>Users List</h1>
+        <div>
           {this.state.users.map(u => (
-            <li key={u.id}>{u.username}</li>
+            <h3 key={u.id}>{u.username}</h3>
           ))}
-        </ul>
+        </div>
       </>
     );
   }
